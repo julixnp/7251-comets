@@ -20,7 +20,7 @@ public class HardwareBudgetRobot {
     private LinearOpMode myOpMode = null;   // gain access to methods in the calling OpMode.
 
     /* Public Opmode Members */
-    public DcMotor motor1,motor2, motor3, motor4, arm;
+    public DcMotor motor1,motor2, motor3, motor4;
     public CRServo hand;
     BNO055IMU imu;
 
@@ -47,7 +47,7 @@ public class HardwareBudgetRobot {
         motor4.setPower(0);
 
         /* Intake Hardware */
-        arm = myOpMode.hardwareMap.get(DcMotor.class, "Arm");
+        //arm = myOpMode.hardwareMap.get(DcMotor.class, "Arm");
 
         hand = myOpMode.hardwareMap.get(CRServo.class, "Hand");
         hand.setPower(0.0);

@@ -26,7 +26,7 @@ public class BudgetTeleOp extends LinearOpMode {
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
-        robot.arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //robot.arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         waitForStart();
         while (opModeIsActive()) {
@@ -38,7 +38,6 @@ public class BudgetTeleOp extends LinearOpMode {
             //int currentPosition = robot.arm.getCurrentPosition();
             //Servo to open/close hand
 
-            
 
             //Used to ensure same ratio and contain values between [-1,1]
             double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
@@ -48,16 +47,16 @@ public class BudgetTeleOp extends LinearOpMode {
             double backRightPower = (y + x - rx) / denominator;
 
 
-
             double throtte_control = 0.5;
             double slowDown = 1;
-            if(gamepad1.right_trigger > 0)
+            if (gamepad1.right_trigger > 0)
                 slowDown -= 0.5;
 
-            robot.motor1.setPower(frontLeftPower*throtte_control*slowDown);
-            robot.motor2.setPower(backLeftPower*throtte_control*slowDown);
-            robot.motor3.setPower(frontRightPower*throtte_control*slowDown);
-            robot.motor4.setPower(backRightPower*throtte_control*slowDown);
+            robot.motor1.setPower(frontLeftPower * throtte_control * slowDown);
+            robot.motor2.setPower(backLeftPower * throtte_control * slowDown);
+            robot.motor3.setPower(frontRightPower * throtte_control * slowDown);
+            robot.motor4.setPower(backRightPower * throtte_control * slowDown);
+
             //robot.hand.setPosition(gripPower);
 /*
             telemetry.addData("frontLeft:", frontLeftPower);
@@ -69,7 +68,7 @@ public class BudgetTeleOp extends LinearOpMode {
 
 
             /* INTAKE */
-            if (gamepad2.left_stick_y * -1 > 0) { //up
+           /* if (gamepad2.left_stick_y * -1 > 0) { //up
                 robot.arm.setTargetPosition(robot.arm.getCurrentPosition() - 100);
                 robot.arm.setPower(.75);
                 robot.arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -106,5 +105,9 @@ public class BudgetTeleOp extends LinearOpMode {
     void motorTelemetry() {
         telemetry.addData("Arm", robot.arm.getCurrentPosition());
         telemetry.update();
+    }
+}
+*/
+        }
     }
 }

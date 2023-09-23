@@ -216,9 +216,9 @@ public class BudgetAutonomous extends LinearOpMode
         telemetry.addLine(String.format("Translation X: %.2f feet", detection.pose.x*FEET_PER_METER));
         telemetry.addLine(String.format("Translation Y: %.2f feet", detection.pose.y*FEET_PER_METER));
         telemetry.addLine(String.format("Translation Z: %.2f feet", detection.pose.z*FEET_PER_METER));
-        telemetry.addLine(String.format("Rotation Yaw: %.2f degrees", Math.toDegrees(detection.pose.yaw)));
-        telemetry.addLine(String.format("Rotation Pitch: %.2f degrees", Math.toDegrees(detection.pose.pitch)));
-        telemetry.addLine(String.format("Rotation Roll: %.2f degrees", Math.toDegrees(detection.pose.roll)));
+  //      telemetry.addLine(String.format("Rotation Yaw: %.2f degrees", Math.toDegrees(detection.pose.yaw)));
+    //    telemetry.addLine(String.format("Rotation Pitch: %.2f degrees", Math.toDegrees(detection.pose.pitch)));
+    //    telemetry.addLine(String.format("Rotation Roll: %.2f degrees", Math.toDegrees(detection.pose.roll)));
     }
 
     void scoreMediumJunction() {
@@ -357,40 +357,32 @@ public class BudgetAutonomous extends LinearOpMode
     public void armMove(double speed,
                         int target){
         int newMotor1Target;
-        robot.arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        newMotor1Target = robot.arm.getCurrentPosition() + target;
+      //  robot.arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+       // newMotor1Target = robot.arm.getCurrentPosition() + target;
         // Ensure that the opmode is still active
         if (opModeIsActive()) {
 
-            robot.arm.setTargetPosition(newMotor1Target);
+          //  robot.arm.setTargetPosition(newMotor1Target);
 
-            robot.arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+         //   robot.arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
             // reset the timeout time and start motion.
             runtime.reset();
-            robot.arm.setPower(Math.abs(speed));
+          //  robot.arm.setPower(Math.abs(speed));
 
 
-            while (opModeIsActive() &&
-                    (robot.arm.isBusy())) {
-
-                // Display it for the driver.
-                telemetry.addData("Running to", newMotor1Target);
-                telemetry.addData("Currently at",
-                        robot.arm.getCurrentPosition());
-                telemetry.update();
             }
 
             // Stop all motion;
-            robot.arm.setPower(0);
+       //     robot.arm.setPower(0);
 
 
             // Turn off RUN_TO_POSITION
-            robot.arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+           // robot.arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         }
-    }
+
     public void linearDrive(double speed,
                             double target) {
         int newMotor1Target;
