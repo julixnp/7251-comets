@@ -56,7 +56,7 @@ public class BudgetAutonomous extends LinearOpMode
 
     OpenCvCamera camera;
     AprilTagDetectionPipeline aprilTagDetectionPipeline;
-    HardwareBudgetRobot robot = new HardwareBudgetRobot(this);
+    HardwareBudgetRobot robot = new HardwareBudgetRobot(this );
 
     static final double FEET_PER_METER = 3.28084;
 
@@ -438,7 +438,7 @@ public class BudgetAutonomous extends LinearOpMode
             while (opModeIsActive() &&
                     (robot.motor1.isBusy() && robot.motor2.isBusy()) && (robot.motor3.isBusy() && robot.motor4.isBusy())) {
 
-                // Display it for the driver.
+                // Display it for the driver
                 telemetry.addData("Running to (LINEAR DRIVE)",  "Motor 1: %7d Motor 2: %7d Motor 3: %7d Motor 4: %7d",
                         newMotor1Target, newMotor2Target, newMotor3Target, newMotor4Target);
                 telemetry.addData("Currently at (LINEAR DRIVE)",  "Motor 1: %7d Motor 2: %7d Motor 3: %7d Motor 4: %7d",

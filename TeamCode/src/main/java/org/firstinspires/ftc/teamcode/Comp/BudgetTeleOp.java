@@ -57,57 +57,6 @@ public class BudgetTeleOp extends LinearOpMode {
             robot.motor3.setPower(frontRightPower * throtte_control * slowDown);
             robot.motor4.setPower(backRightPower * throtte_control * slowDown);
 
-            //robot.hand.setPosition(gripPower);
-/*
-            telemetry.addData("frontLeft:", frontLeftPower);
-            telemetry.addData("backLeft:", backLeftPower);
-            telemetry.addData("frontRight:", frontRightPower);
-            telemetry.addData("backRight:", backRightPower);
-            telemetry.update();
-*/
-
-
-            /* INTAKE */
-           /* if (gamepad2.left_stick_y * -1 > 0) { //up
-                robot.arm.setTargetPosition(robot.arm.getCurrentPosition() - 100);
-                robot.arm.setPower(.75);
-                robot.arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            }
-            else if (gamepad2.left_stick_y * -1 < 0) { //down
-                robot.arm.setTargetPosition(robot.arm.getCurrentPosition() + 50);
-                robot.arm.setPower(.5);
-                robot.arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            }
-            else if (robot.arm.getCurrentPosition() < -2175) {
-                robot.arm.setTargetPosition(-2150);
-                robot.arm.setPower(.5); //TODO: change?
-                robot.arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            }
-            else if (robot.arm.getCurrentPosition() > 25) {
-                robot.arm.setTargetPosition(0);
-                robot.arm.setPower(.5); //TODO: change?
-                robot.arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            }
-
-            if(gamepad2.left_trigger > 0) { //close
-                robot.hand.setPower(1);
-            }
-            else if(gamepad2.right_trigger > 0) {  //open
-                robot.hand.setPower(-1);
-            }
-            else {
-                robot.hand.setPower(0);
-            }
-            motorTelemetry();
-        }
-    }
-
-    void motorTelemetry() {
-        telemetry.addData("Arm", robot.arm.getCurrentPosition());
-        telemetry.update();
-    }
-}
-*/
         }
     }
 }
