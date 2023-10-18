@@ -21,7 +21,7 @@ public class HardwareBudgetRobot {
 
     /* Public Opmode Members */
     public DcMotor motor1,motor2, motor3, motor4, motor5;
-    public CRServo hand;
+    public CRServo servo1,servo2;
     BNO055IMU imu;
 
 
