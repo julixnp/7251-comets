@@ -20,7 +20,7 @@ public class HardwareBudgetRobot {
     private LinearOpMode myOpMode = null;   // gain access to methods in the calling OpMode.
 
     /* Public Opmode Members */
-    public DcMotor motor1,motor2, motor3, motor4;
+    public DcMotor motor1,motor2, motor3, motor4, motor5;
     public CRServo hand;
     BNO055IMU imu;
 
@@ -35,7 +35,7 @@ public class HardwareBudgetRobot {
         motor2 = myOpMode.hardwareMap.get(DcMotor.class, "Motor 2");
         motor3 = myOpMode.hardwareMap.get(DcMotor.class, "Motor 3");
         motor4 = myOpMode.hardwareMap.get(DcMotor.class, "Motor 4");
-
+        motor5 = myOpMode.hardwareMap.get(DcMotor.class, "Motor 5");
 
 
         motor1.setDirection(DcMotor.Direction.REVERSE);
@@ -45,12 +45,8 @@ public class HardwareBudgetRobot {
         motor2.setPower(0);
         motor3.setPower(0);
         motor4.setPower(0);
-
+        motor5.setPower(0);
         /* Intake Hardware */
-        //arm = myOpMode.hardwareMap.get(DcMotor.class, "Arm");
-
-        hand = myOpMode.hardwareMap.get(CRServo.class, "Hand");
-        hand.setPower(0.0);
 
         /* Gyros */
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
