@@ -31,20 +31,51 @@ public class Servotesting extends OpMode {
             telemetry.addData("Status", "Stopping Servo");
         }
 
-        telemetry.addData("Run Time", runtime.toString());
-        telemetry.update();
+        if (gamepad1.b) {
+            rotateServoCounterClockwise();
+            telemetry.addData("Status", "Rotating Servo Clockwise");
+        } else {
+            stopServo();
+            telemetry.addData("Status", "Stopping Servo");
+        }
+
+        if (gamepad1.y) {
+            servo1.setPosition(1.0);
+            servo2.setPosition(1.0);
+            telemetry.addData("Status", "Rotating Servo Clockwise");
+        }
+        if (gamepad1.x) {
+            servo1.setPosition(0.5);
+            servo2.setPosition(0.5);
+            telemetry.addData("Status", "Rotating Servo Clockwise");
+        }
+
+            telemetry.addData("Run Time", runtime.toString());
+            telemetry.update();
+
+        }
+
+
+        private void rotateServoClockwise () {
+            // Add code to rotate the servo clockwise
+            servo1.setPosition(0.0);
+            servo2.setPosition(0.0); // Set the servo position to rotate clockwise
+
+        }
+
+        private void rotateServoCounterClockwise () {
+            // Add code to rotate the servo clockwise
+            servo1.setPosition(1.0);
+            servo2.setPosition(1.0); // Set the servo position to rotate clockwise
+
+        }
+
+        private void stopServo () {
+            // Add code to stop the servo
+            servo1.setPosition(0.5);
+            servo2.setPosition(0.5); // Set the servo position to rotate clockwise
+
+        }
     }
 
-    private void rotateServoClockwise() {
-        // Add code to rotate the servo clockwise
-        servo1.setPosition(0.0);  // Set the servo position to rotate clockwise
-        servo2.setPosition(0.0);
-    }
-
-    private void stopServo() {
-        // Add code to stop the servo
-        servo1.setPosition(0.5);  // Set the servo position to rotate clockwise
-        servo2.setPosition(0.5);
-    }
-}
 
