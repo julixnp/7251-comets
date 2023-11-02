@@ -31,11 +31,11 @@ public class HardwareBudgetRobot {
 
     public void init() {
         /* Drive Hardware */
-        motor1 = myOpMode.hardwareMap.get(DcMotor.class, "Motor 1");
-        motor2 = myOpMode.hardwareMap.get(DcMotor.class, "Motor 2");
-        motor3 = myOpMode.hardwareMap.get(DcMotor.class, "Motor 3");
-        motor4 = myOpMode.hardwareMap.get(DcMotor.class, "Motor 4");
-        motor5 = myOpMode.hardwareMap.get(DcMotor.class, "Motor 5");
+        motor1 = myOpMode.hardwareMap.get(DcMotor.class, "motor1");
+        motor2 = myOpMode.hardwareMap.get(DcMotor.class, "motor2");
+        motor3 = myOpMode.hardwareMap.get(DcMotor.class, "motor3");
+        motor4 = myOpMode.hardwareMap.get(DcMotor.class, "motor4");
+        //motor5 = myOpMode.hardwareMap.get(DcMotor.class, "Motor 4");
 
 
         motor1.setDirection(DcMotor.Direction.REVERSE);
@@ -45,7 +45,7 @@ public class HardwareBudgetRobot {
         motor2.setPower(0);
         motor3.setPower(0);
         motor4.setPower(0);
-        motor5.setPower(0);
+      //  motor5.setPower(0);
         /* Intake Hardware */
         
         /* Servos */
