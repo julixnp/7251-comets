@@ -143,9 +143,9 @@ The readme.md file located in the [/TeamCode/src/main/java/org/firstinspires/ftc
 * Shows a hint on the Driver Station UI about how to bind a gamepad when buttons are pressed or the sticks are moved on an unbound gamepad.
 * Adds option for fullscreening "Camera Stream" on Driver Station.
 * OnBotJava source code is automatically saved as a ZIP file on every build with a rolling window of the last 30 builds kept; allows recovering source code from previous builds if code is accidentally deleted or corrupted.
-* Adds support for changing the addresses of Expansion Hubs that are not connected directly via USB.
-  * The Expansion Hub Address Change screen now has an Apply button that changes the addresses without leaving the screen.
-  * Addresses that are assigned to other hubs connected to the same USB connection or Control Hub are no longer able to be selected.
+  * Adds support for changing the addresses of Expansion Hubs that are not connected directly via USB.
+    * The Expansion Hub Address Change screen now has an Apply button that changes the addresses without leaving the screen.
+    * Addresses that are assigned to other hubs connected to the same USB connection or Control Hub are no longer able to be selected.
 * Increases maximum size of Blocks inline comments to 100 characters
 * Saves position of open Blocks comment balloons
 * Adds new AprilTag Driving samples:  RobotDriveToAprilTagTank & RobotDriveToAprilTagOmni
