@@ -7,8 +7,6 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.Hardware.HardwareBudgetRobot;
-
 @Config
 @TeleOp(name="ArmTesting", group="Testing")
 //@Disabled
@@ -16,11 +14,6 @@ public class ArmTesting extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
     DcMotor arm;
     CRServo hand;
-
-    final int groundHeight = 3200;
-    final int lowHeight = 5800;
-    final int middleHeight = 8400;
-
 
     @Override
     public void runOpMode() {
@@ -35,12 +28,10 @@ public class ArmTesting extends LinearOpMode {
 
         while(opModeIsActive()) {
             if (gamepad1.y) {
-                arm.setTargetPosition(lowHeight);
                 arm.setPower(power);
                 arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
             } else if (gamepad1.x) {
-                arm.setTargetPosition(groundHeight);
                 arm.setPower(power);
                 arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
@@ -50,7 +41,6 @@ public class ArmTesting extends LinearOpMode {
                 arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             }
             else if (gamepad1.b) {
-                arm.setTargetPosition(groundHeight);
                 arm.setPower(power);
                 arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             }

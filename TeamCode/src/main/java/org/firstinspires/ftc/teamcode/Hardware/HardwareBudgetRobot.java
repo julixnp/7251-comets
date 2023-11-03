@@ -21,7 +21,7 @@ public class HardwareBudgetRobot {
 
     /* Public Opmode Members */
     public DcMotor motor1,motor2, motor3, motor4, motor5;
-    public CRServo servo1,servo2;
+    public Servo servo1;
     BNO055IMU imu;
 
 
@@ -47,15 +47,9 @@ public class HardwareBudgetRobot {
         motor4.setPower(0);
       //  motor5.setPower(0);
         /* Intake Hardware */
-
-        /* Gyros */
-        BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
-        parameters.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
-        parameters.accelUnit           = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
-        parameters.calibrationDataFile = "BNO055IMUCalibration.json"; // see the calibration sample opmode
-        parameters.loggingEnabled      = true;
-        parameters.loggingTag          = "IMU";
-        parameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
+        
+        /* Servos */
+        servo1 = myOpMode.hardwareMap.get(Servo.class, "Servo 1");
     }
 
 
