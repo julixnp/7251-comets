@@ -70,7 +70,7 @@ public class BudgetTeleOp extends LinearOpMode {
             robot.motor4.setPower(backRightPower * throtte_control * slowDown);
 
             // Servo Code
-            if (gamepad1.right_bumper) {
+            if (gamepad2.right_bumper) {
                 servo1.setPosition(0.0);
                 telemetry.addData("Status", "Rotating Servo Clockwise");
             } else {
@@ -78,7 +78,7 @@ public class BudgetTeleOp extends LinearOpMode {
                 telemetry.addData("Status", "Stopping Servo");
             }
 
-            if (gamepad1.left_bumper) {
+            if (gamepad2.left_bumper) {
                 servo1.setPosition(1.0);
                 telemetry.addData("Status", "Rotating Servo Clockwise");
             } else {
@@ -86,11 +86,11 @@ public class BudgetTeleOp extends LinearOpMode {
                 telemetry.addData("Status", "Stopping Servo");
             }
 
-            if (gamepad1.dpad_up) {
+            if (gamepad2.dpad_up) {
                 servo1.setPosition(1.0);
                 telemetry.addData("Status", "Rotating Servo Clockwise");
             }
-            if (gamepad1.dpad_down) {
+            if (gamepad2.dpad_down) {
                 servo1.setPosition(0.5);
                 telemetry.addData("Status", "Rotating Servo Clockwise");
             }
@@ -98,15 +98,15 @@ public class BudgetTeleOp extends LinearOpMode {
 
             //Arm code
             double power = 1;
-            if (gamepad1.a) {
+            if (gamepad2.a) {
                 arm.setTargetPosition(0);
                 arm.setPower(power);
                 arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            } else if (gamepad1.left_stick_y * -1 > 0) {
+            } else if (gamepad2.left_stick_y * -1 > 0) {
                 arm.setTargetPosition(arm.getCurrentPosition() + 300);
                 arm.setPower(power);
                 arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            } else if (gamepad1.left_stick_y * -1 < 0) {
+            } else if (gamepad2.left_stick_y * -1 < 0) {
                 arm.setTargetPosition(arm.getCurrentPosition() - 300);
                 arm.setPower(power);
                 arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
