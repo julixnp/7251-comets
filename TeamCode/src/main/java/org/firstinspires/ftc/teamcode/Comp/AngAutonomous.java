@@ -1,15 +1,10 @@
 package org.firstinspires.ftc.teamcode.Comp;
 
-//import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-//import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-//import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
-//import org.firstinspires.ftc.teamcode.Hardware.HardwareBudgetRobot;
 
 @Config
 @Autonomous(name="AngAutonomous", group="Comp")
@@ -89,10 +84,10 @@ public class AngAutonomous extends LinearOpMode {
 
     public void driveByTime (double power, long time){
 
-        motorFrontRight.setPower(1);
-        motorFrontLeft.setPower(1);
-        motorBackRight.setPower(1);
-        motorBackLeft.setPower(1);
+        motorFrontRight.setPower(power);
+        motorFrontLeft.setPower(power);
+        motorBackRight.setPower(power);
+        motorBackLeft.setPower(power);
 
         sleep(time);
 
