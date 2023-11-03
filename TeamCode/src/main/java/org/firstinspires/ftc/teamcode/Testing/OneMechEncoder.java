@@ -34,13 +34,13 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.Hardware.HardwareBudgetRobot;
+import org.firstinspires.ftc.teamcode.Hardware.HardwareAngRobot;
 
 @Autonomous(name="OneMechEncoder", group="Testing")
 public class OneMechEncoder extends LinearOpMode {
 
     /* Declare OpMode members. */
-    HardwareBudgetRobot robot = new HardwareBudgetRobot(this);
+    HardwareAngRobot robot = new HardwareAngRobot(this);
 
     private ElapsedTime     runtime = new ElapsedTime();
 

@@ -29,7 +29,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
-import org.firstinspires.ftc.teamcode.Hardware.HardwareBudgetRobot;
+import org.firstinspires.ftc.teamcode.Hardware.HardwareAngRobot;
 import org.openftc.apriltag.AprilTagDetection;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
@@ -54,7 +54,7 @@ public class MotorEncoderTest extends LinearOpMode {
 
     OpenCvCamera camera;
     AprilTagDetectionPipeline aprilTagDetectionPipeline;
-    HardwareBudgetRobot robot = new HardwareBudgetRobot(this);
+    HardwareAngRobot robot = new HardwareAngRobot(this);
 
     static final double FEET_PER_METER = 3.28084;
 

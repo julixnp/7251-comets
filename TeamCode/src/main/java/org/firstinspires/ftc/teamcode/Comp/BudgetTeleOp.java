@@ -4,22 +4,20 @@
 
 package org.firstinspires.ftc.teamcode.Comp;
 
-import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 
-import org.firstinspires.ftc.teamcode.Hardware.HardwareBudgetRobot;
+import org.firstinspires.ftc.teamcode.Hardware.HardwareAngRobot;
 
 @Config
 @TeleOp(name="BudgetTeleOp", group="Comp")
 public class BudgetTeleOp extends LinearOpMode {
 
-    HardwareBudgetRobot robot = new HardwareBudgetRobot(this);
+    HardwareAngRobot robot = new HardwareAngRobot(this);
     static final int maxHeight = -2150;
 
     private Servo servo1;

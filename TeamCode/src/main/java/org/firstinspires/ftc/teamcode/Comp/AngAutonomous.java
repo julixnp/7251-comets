@@ -10,10 +10,10 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 @Autonomous(name="AngAutonomous", group="Comp")
 public class AngAutonomous extends LinearOpMode {
 
-    public DcMotor motorFrontLeft, motorFrontRight, motorBackRight, motorBackLeft;
+    public DcMotor motorFrontLeft, motorFrontRight, motorBackRight, motorBackLeft; motorArm;
 
 
-    private ElapsedTime runtime = new ElapsedTime();
+    private final ElapsedTime runtime = new ElapsedTime();
 
     static final double     COUNTS_PER_MOTOR_REV    = 1440 ;
     static final double     DRIVE_GEAR_REDUCTION    = 1.0 ;
@@ -32,6 +32,7 @@ public class AngAutonomous extends LinearOpMode {
         motorBackRight = hardwareMap.dcMotor.get("motor2");
         motorFrontLeft = hardwareMap.dcMotor.get("motor3");
         motorFrontRight = hardwareMap.dcMotor.get("motor4");
+
 
 
 

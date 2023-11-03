@@ -30,18 +30,17 @@
 package org.firstinspires.ftc.teamcode.Testing;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.Hardware.HardwareBudgetRobot;
+import org.firstinspires.ftc.teamcode.Hardware.HardwareAngRobot;
 
 @Autonomous(name="FourMechEncoder", group="Testing")
 public class FourMechEncoder extends LinearOpMode {
 
     /* Declare OpMode members. */
-    HardwareBudgetRobot robot = new HardwareBudgetRobot(this);
+    HardwareAngRobot robot = new HardwareAngRobot(this);
 
     private ElapsedTime     runtime = new ElapsedTime();
 
