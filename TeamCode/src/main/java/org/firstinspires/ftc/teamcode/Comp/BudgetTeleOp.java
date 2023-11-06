@@ -18,18 +18,11 @@ import org.firstinspires.ftc.teamcode.Hardware.HardwareAngRobot;
 public class BudgetTeleOp extends LinearOpMode {
 
     HardwareAngRobot robot = new HardwareAngRobot(this);
-    static final int maxHeight = -2150;
-
-    private Servo servo1;
-
-    private DcMotor arm;
 
     @Override
     public void runOpMode() {
-        servo1 = hardwareMap.servo.get("Servo1");  // replace "your_servo_name" with the actual name in your configuration
-        arm = hardwareMap.dcMotor.get("Arm");
-        arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        //robot.motorArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //robot.motorArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         telemetry.addData("Status", "Initialization Complete");
 
@@ -71,27 +64,27 @@ public class BudgetTeleOp extends LinearOpMode {
 
             // Servo Code
             if (gamepad2.right_bumper) {
-                servo1.setPosition(0.0);
+                robot.servo1.setPosition(0.0);
                 telemetry.addData("Status", "Rotating Servo Clockwise");
             } else {
-                servo1.setPosition(0.5);
+                robot.servo1.setPosition(0.5);
                 telemetry.addData("Status", "Stopping Servo");
             }
 
             if (gamepad2.left_bumper) {
-                servo1.setPosition(1.0);
+                robot.servo1.setPosition(1.0);
                 telemetry.addData("Status", "Rotating Servo Clockwise");
             } else {
-                servo1.setPosition(0.5);
+                robot.servo1.setPosition(0.5);
                 telemetry.addData("Status", "Stopping Servo");
             }
 
             if (gamepad2.dpad_up) {
-                servo1.setPosition(1.0);
+                robot.servo1.setPosition(1.0);
                 telemetry.addData("Status", "Rotating Servo Clockwise");
             }
             if (gamepad2.dpad_down) {
-                servo1.setPosition(0.5);
+                robot.servo1.setPosition(0.5);
                 telemetry.addData("Status", "Rotating Servo Clockwise");
             }
 
@@ -99,17 +92,17 @@ public class BudgetTeleOp extends LinearOpMode {
             //Arm code
             double power = 1;
             if (gamepad2.a) {
-                arm.setTargetPosition(0);
-                arm.setPower(power);
-                arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                robot.motorArm.setTargetPosition(0);
+                robot.motorArm.setPower(power);
+                robot.motorArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             } else if (gamepad2.left_stick_y * -1 > 0) {
-                arm.setTargetPosition(arm.getCurrentPosition() + 300);
-                arm.setPower(power);
-                arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                robot.motorArm.setTargetPosition(robot.motorArm.getCurrentPosition() + 300);
+                robot.motorArm.setPower(power);
+                robot.motorArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             } else if (gamepad2.left_stick_y * -1 < 0) {
-                arm.setTargetPosition(arm.getCurrentPosition() - 300);
-                arm.setPower(power);
-                arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                robot.motorArm.setTargetPosition(robot.motorArm.getCurrentPosition() - 300);
+                robot.motorArm.setPower(power);
+                robot.motorArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             }
 
         }
