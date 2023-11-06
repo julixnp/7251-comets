@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 @Autonomous(name="AngAutonomous", group="Comp")
 public class AngAutonomous extends LinearOpMode {
 
-    public DcMotor motorFrontLeft, motorFrontRight, motorBackRight, motorBackLeft; motorArm;
+    public DcMotor motorFrontLeft, motorFrontRight, motorBackRight, motorBackLeft;
 
 
     private final ElapsedTime runtime = new ElapsedTime();
