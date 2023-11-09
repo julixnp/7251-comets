@@ -62,10 +62,10 @@ public class BudgetTeleOp extends LinearOpMode {
             robot.motor4.setPower(backRightPower * throtte_control * slowDown);
 
             // Servo Code
-            /*if (gamepad2.right_bumper) {
+            if (gamepad2.right_bumper) {
                 robot.servo1.setPosition(0.0);
                 telemetry.addData("Status", "Rotating Servo Clockwise");
-            } if else{
+            } else {
                 robot.servo1.setPosition(0.5);
                 telemetry.addData("Status", "Stopping Servo");
             }
@@ -73,10 +73,10 @@ public class BudgetTeleOp extends LinearOpMode {
             if (gamepad2.left_bumper) {
                 robot.servo1.setPosition(1.0);
                 telemetry.addData("Status", "Rotating Servo Clockwise");
-            } else if {
+            } else {
                 robot.servo1.setPosition(0.5);
                 telemetry.addData("Status", "Stopping Servo");
-            } */
+            }
 
             if (gamepad2.dpad_up) {
                 robot.servo1.setPosition(1.0);
@@ -89,7 +89,7 @@ public class BudgetTeleOp extends LinearOpMode {
 
 
             //Arm code
-            double powerArm = 0.3;
+            double powerArm = 0.1;
             if (gamepad2.a) {
                 robot.motorArm.setTargetPosition(0);
                 robot.motorArm.setPower(powerArm);
