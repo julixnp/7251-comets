@@ -14,8 +14,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.teamcode.Hardware.HardwareAngRobot;
 
 @Config
-@TeleOp(name="BudgetTeleOp", group="Comp")
-public class BudgetTeleOp extends LinearOpMode {
+@TeleOp(name="AngTeleOp", group="Comp")
+public class AngTeleOp extends LinearOpMode {
 
     HardwareAngRobot robot = new HardwareAngRobot(this);
 
@@ -53,13 +53,14 @@ public class BudgetTeleOp extends LinearOpMode {
 
             double throtte_control = 0.5;
             double slowDown = 1;
-            if (gamepad1.right_trigger > 0)
+            if (gamepad1.right_trigger > 0) {
                 slowDown -= 0.5;
 
-            robot.motor1.setPower(frontLeftPower * throtte_control * slowDown);
-            robot.motor2.setPower(backLeftPower * throtte_control * slowDown);
-            robot.motor3.setPower(frontRightPower * throtte_control * slowDown);
-            robot.motor4.setPower(backRightPower * throtte_control * slowDown);
+                robot.motor1.setPower(frontLeftPower * throtte_control * slowDown);
+                robot.motor2.setPower(backLeftPower * throtte_control * slowDown);
+                robot.motor3.setPower(frontRightPower * throtte_control * slowDown);
+                robot.motor4.setPower(backRightPower * throtte_control * slowDown);
+            }
 
             // Servo Code
             if (gamepad2.right_bumper) {
@@ -78,32 +79,38 @@ public class BudgetTeleOp extends LinearOpMode {
                 telemetry.addData("Status", "Stopping Servo");
             }
 
-            if (gamepad2.dpad_up) {
-                robot.servo1.setPosition(1.0);
-                telemetry.addData("Status", "Rotating Servo Clockwise");
-            }
-            if (gamepad2.dpad_down) {
-                robot.servo1.setPosition(-0.5);
-                telemetry.addData("Status", "Rotating Servo Clockwise");
-            }
+            //Arm code - fast
+
+            double powerArm = 0.01;
+
+            robot.motorArm.setPower(.1);
 
 
-            //Arm code
-            double powerArm = 0.1;
+
             if (gamepad2.a) {
                 robot.motorArm.setTargetPosition(0);
-                robot.motorArm.setPower(powerArm);
-                robot.motorArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            } else if (gamepad2.left_stick_y * -1 > 0) {
-                robot.motorArm.setTargetPosition(robot.motorArm.getCurrentPosition() + 300);
-                robot.motorArm.setPower(powerArm);
-                robot.motorArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            } else if (gamepad2.left_stick_y * -1 < 0) {
-                robot.motorArm.setTargetPosition(robot.motorArm.getCurrentPosition() - 300);
-                robot.motorArm.setPower(powerArm);
                 robot.motorArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             }
 
+            //fast
+            while (gamepad2.left_stick_y * -1 > 0) {
+                robot.motorArm.setTargetPosition(robot.motorArm.getCurrentPosition() + 35);
+                robot.motorArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            }
+            while (gamepad2.left_stick_y * -1 < 0) {
+                robot.motorArm.setTargetPosition(robot.motorArm.getCurrentPosition() - 35);
+                robot.motorArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            }
+
+            //slow
+            while (gamepad2.dpad_down) {
+                robot.motorArm.setTargetPosition(robot.motorArm.getCurrentPosition() + 10);
+                robot.motorArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            }
+            while (gamepad2.dpad_up) {
+                robot.motorArm.setTargetPosition(robot.motorArm.getCurrentPosition() - 10);
+                robot.motorArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            }
         }
     }
 }
