@@ -83,24 +83,24 @@ public class BudgetTeleOp extends LinearOpMode {
                 telemetry.addData("Status", "Rotating Servo Clockwise");
             }
             if (gamepad2.dpad_down) {
-                robot.servo1.setPosition(0.5);
+                robot.servo1.setPosition(-0.5);
                 telemetry.addData("Status", "Rotating Servo Clockwise");
             }
 
 
             //Arm code
-            double power = 1;
+            double powerArm = 0.3;
             if (gamepad2.a) {
                 robot.motorArm.setTargetPosition(0);
-                robot.motorArm.setPower(power);
+                robot.motorArm.setPower(powerArm);
                 robot.motorArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             } else if (gamepad2.left_stick_y * -1 > 0) {
                 robot.motorArm.setTargetPosition(robot.motorArm.getCurrentPosition() + 300);
-                robot.motorArm.setPower(power);
+                robot.motorArm.setPower(powerArm);
                 robot.motorArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             } else if (gamepad2.left_stick_y * -1 < 0) {
                 robot.motorArm.setTargetPosition(robot.motorArm.getCurrentPosition() - 300);
-                robot.motorArm.setPower(power);
+                robot.motorArm.setPower(powerArm);
                 robot.motorArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             }
 
