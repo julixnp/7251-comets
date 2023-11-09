@@ -29,7 +29,6 @@ public class AngTeleOp extends LinearOpMode {
         robot.init();  
 
 
-        telemetry.addData("Status", "Initialized");
         telemetry.update();
         //robot.arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
@@ -39,10 +38,6 @@ public class AngTeleOp extends LinearOpMode {
             double y = gamepad1.left_stick_x * 1.1;
             double rx = gamepad1.right_stick_x;
 
-
-            //int currentPosition = robot.arm.getCurrentPosition();
-            //Servo to open/close hand
-
             //Used to ensure same ratio and contain values between [-1,1]
             double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
             double frontLeftPower = (y + x + rx) / denominator;
@@ -50,17 +45,15 @@ public class AngTeleOp extends LinearOpMode {
             double frontRightPower = (y - x - rx) / denominator;
             double backRightPower = (y + x - rx) / denominator;
 
-
             double throtte_control = 0.5;
             double slowDown = 1;
-            if (gamepad1.right_trigger > 0) {
-                slowDown -= 0.5;
+            if(gamepad1.right_trigger > 0)
+                slowDown -= 0.75;
 
-                robot.motor1.setPower(frontLeftPower * throtte_control * slowDown);
-                robot.motor2.setPower(backLeftPower * throtte_control * slowDown);
-                robot.motor3.setPower(frontRightPower * throtte_control * slowDown);
-                robot.motor4.setPower(backRightPower * throtte_control * slowDown);
-            }
+            robot.motor1.setPower(frontLeftPower*throtte_control*slowDown);
+            robot.motor2.setPower(backLeftPower*throtte_control*slowDown);
+            robot.motor3.setPower(frontRightPower*throtte_control*slowDown);
+            robot.motor4.setPower(backRightPower*throtte_control*slowDown);
 
             // Servo Code
             if (gamepad2.right_bumper) {
@@ -103,15 +96,13 @@ public class AngTeleOp extends LinearOpMode {
             }
 
             //slow
-            while (gamepad2.dpad_down) {
+            while (gamepad2.dpad_up) {
                 robot.motorArm.setTargetPosition(robot.motorArm.getCurrentPosition() + 10);
                 robot.motorArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             }
-            while (gamepad2.dpad_up) {
+            while (gamepad2.dpad_down) {
                 robot.motorArm.setTargetPosition(robot.motorArm.getCurrentPosition() - 10);
                 robot.motorArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-                //Hi this message does nothing
             }
         }
     }
