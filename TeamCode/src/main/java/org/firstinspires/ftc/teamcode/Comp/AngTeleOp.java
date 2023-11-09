@@ -110,6 +110,8 @@ public class AngTeleOp extends LinearOpMode {
             while (gamepad2.dpad_up) {
                 robot.motorArm.setTargetPosition(robot.motorArm.getCurrentPosition() - 10);
                 robot.motorArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+                //Hi this message does nothing
             }
         }
     }
