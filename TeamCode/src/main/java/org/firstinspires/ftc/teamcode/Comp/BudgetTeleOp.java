@@ -26,7 +26,7 @@ public class BudgetTeleOp extends LinearOpMode {
 
         telemetry.addData("Status", "Initialization Complete");
 
-        robot.init();
+        robot.init();  
 
 
         telemetry.addData("Status", "Initialized");
@@ -42,7 +42,6 @@ public class BudgetTeleOp extends LinearOpMode {
 
             //int currentPosition = robot.arm.getCurrentPosition();
             //Servo to open/close hand
-
 
             //Used to ensure same ratio and contain values between [-1,1]
             double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
@@ -63,10 +62,10 @@ public class BudgetTeleOp extends LinearOpMode {
             robot.motor4.setPower(backRightPower * throtte_control * slowDown);
 
             // Servo Code
-            if (gamepad2.right_bumper) {
+            /*if (gamepad2.right_bumper) {
                 robot.servo1.setPosition(0.0);
                 telemetry.addData("Status", "Rotating Servo Clockwise");
-            } else {
+            } if else{
                 robot.servo1.setPosition(0.5);
                 telemetry.addData("Status", "Stopping Servo");
             }
@@ -74,10 +73,10 @@ public class BudgetTeleOp extends LinearOpMode {
             if (gamepad2.left_bumper) {
                 robot.servo1.setPosition(1.0);
                 telemetry.addData("Status", "Rotating Servo Clockwise");
-            } else {
+            } else if {
                 robot.servo1.setPosition(0.5);
                 telemetry.addData("Status", "Stopping Servo");
-            }
+            } */
 
             if (gamepad2.dpad_up) {
                 robot.servo1.setPosition(1.0);

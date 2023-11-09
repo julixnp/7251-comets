@@ -21,7 +21,7 @@ public class ArmTesting extends LinearOpMode {
         hand = hardwareMap.get(CRServo.class, "Hand");
         waitForStart();
 
-        double power = 1;
+        double power = .3;
         //If Y is pressed middle height
         arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
