@@ -38,6 +38,8 @@ public class AngTeleOp extends LinearOpMode {
             double y = gamepad1.left_stick_x * 1.1;
             double rx = gamepad1.right_stick_x;
 
+            float right_stick_x = gamepad2.right_stick_x;
+
             //Used to ensure same ratio and contain values between [-1,1]
             double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
             double frontLeftPower = (y + x + rx) / denominator;
@@ -46,16 +48,23 @@ public class AngTeleOp extends LinearOpMode {
             double backRightPower = (y + x - rx) / denominator;
 
             double throtte_control = 0.5;
-            double slowDown = 1;
-            if(gamepad1.right_trigger > 0)
-                slowDown -= 0.75;
+            double slowDown1 = 1;
+            double slowDown2 = 1;
+            if(gamepad1.right_trigger > 0 )
+                slowDown1 -= 0.50;
 
-            robot.motor1.setPower(frontLeftPower*throtte_control*slowDown);
-            robot.motor2.setPower(backLeftPower*throtte_control*slowDown);
-            robot.motor3.setPower(frontRightPower*throtte_control*slowDown);
-            robot.motor4.setPower(backRightPower*throtte_control*slowDown);
+            if(gamepad2.right_trigger > 0 )
+                slowDown2 -= 0.50;
+
+            robot.motor1.setPower(frontLeftPower*throtte_control*slowDown1);
+            robot.motor2.setPower(backLeftPower*throtte_control*slowDown1);
+            robot.motor3.setPower(frontRightPower*throtte_control*slowDown1);
+            robot.motor4.setPower(backRightPower*throtte_control*slowDown1);
 
             // Servo Code
+
+            robot.servo2.setPower(right_stick_x * throtte_control * slowDown2);
+
             if (gamepad2.right_bumper) {
                 robot.servo1.setPosition(0.0);
                 telemetry.addData("Status", "Rotating Servo Clockwise");
@@ -71,6 +80,8 @@ public class AngTeleOp extends LinearOpMode {
                 robot.servo1.setPosition(0.5);
                 telemetry.addData("Status", "Stopping Servo");
             }
+
+
 
             //Arm code - fast
 
@@ -104,6 +115,8 @@ public class AngTeleOp extends LinearOpMode {
                 robot.motorArm.setTargetPosition(robot.motorArm.getCurrentPosition() - 10);
                 robot.motorArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             }
+
+
         }
     }
 }

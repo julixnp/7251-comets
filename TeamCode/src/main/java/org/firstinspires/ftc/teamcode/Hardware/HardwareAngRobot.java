@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.Hardware;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -19,6 +20,8 @@ public class HardwareAngRobot {
     /* Public Opmode Members */
     public DcMotor motor1,motor2, motor3, motor4, motorArm;
     public Servo servo1;
+
+    public CRServo servo2;
     BNO055IMU imu;
 
 
@@ -47,6 +50,7 @@ public class HardwareAngRobot {
         
         /* Servos */
         servo1 = myOpMode.hardwareMap.get(Servo.class, "Servo 1");
+        servo2 = myOpMode.hardwareMap.get(CRServo.class, "Servo 2");
     }
 
 
