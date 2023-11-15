@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.Comp;
 import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -10,7 +11,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 @Autonomous(name="AngAutonomous", group="Comp")
 public class AngAutonomous extends LinearOpMode {
 
-    public DcMotor motorFrontLeft, motorFrontRight, motorBackRight, motorBackLeft;
+    public DcMotor motorFrontLeft, motorFrontRight, motorBackRight, motorBackLeft, motorArm;
+    public CRServo servoRotate;
 
 
     private final ElapsedTime runtime = new ElapsedTime();
@@ -32,6 +34,7 @@ public class AngAutonomous extends LinearOpMode {
         motorBackRight = hardwareMap.dcMotor.get("motor2");
         motorFrontLeft = hardwareMap.dcMotor.get("motor3");
         motorFrontRight = hardwareMap.dcMotor.get("motor4");
+        motorArm = hardwareMap.dcMotor.get("motorArm");
 
 
 
@@ -65,8 +68,8 @@ public class AngAutonomous extends LinearOpMode {
         motorFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         telemetry.addData("Path0",  "Starting at %7d :%7d");
-                motorFrontLeft.getCurrentPosition();
-                motorFrontRight.getCurrentPosition();
+        motorFrontLeft.getCurrentPosition();
+        motorFrontRight.getCurrentPosition();
         motorBackRight.getCurrentPosition();
         motorBackLeft.getCurrentPosition();
 
@@ -137,10 +140,10 @@ public class AngAutonomous extends LinearOpMode {
                 // Display it for the driver.
                 telemetry.addData("Path1",  "Running to %7d :%7d", newLeftTarget,  newRightTarget);
                 telemetry.addData("Path2",  "Running at %7d :%7d");
-                        motorFrontRight.getCurrentPosition();
-                        motorFrontLeft.getCurrentPosition();
-                        motorBackLeft.getCurrentPosition();
-                        motorBackRight.getCurrentPosition();
+                motorFrontRight.getCurrentPosition();
+                motorFrontLeft.getCurrentPosition();
+                motorBackLeft.getCurrentPosition();
+                motorBackRight.getCurrentPosition();
 
                 telemetry.update();
             }
@@ -167,8 +170,8 @@ public class AngAutonomous extends LinearOpMode {
     }
 
     public void encoderDrive1(double speed,
-                             double frontInches, double backInches,
-                             double timeoutS) {
+                              double frontInches, double backInches,
+                              double timeoutS) {
         int newFrontTarget;
         int newBackTarget;
 

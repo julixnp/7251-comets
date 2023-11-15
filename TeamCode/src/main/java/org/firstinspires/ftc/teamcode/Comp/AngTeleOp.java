@@ -66,18 +66,18 @@ public class AngTeleOp extends LinearOpMode {
             robot.servo2.setPower(right_stick_x * throtte_control * slowDown2);
 
             if (gamepad2.right_bumper) {
-                robot.servo1.setPosition(0.0);
+                robot.servo1.setPower(.1);
                 telemetry.addData("Status", "Rotating Servo Clockwise");
             } else {
-                robot.servo1.setPosition(0.5);
+                robot.servo1.setPower(0);
                 telemetry.addData("Status", "Stopping Servo");
             }
 
             if (gamepad2.left_bumper) {
-                robot.servo1.setPosition(1.0);
+                robot.servo1.setPower(-.1);
                 telemetry.addData("Status", "Rotating Servo Clockwise");
             } else {
-                robot.servo1.setPosition(0.5);
+                robot.servo1.setPower(0);
                 telemetry.addData("Status", "Stopping Servo");
             }
 
