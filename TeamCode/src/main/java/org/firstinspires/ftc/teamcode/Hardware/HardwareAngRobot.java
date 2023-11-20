@@ -20,7 +20,8 @@ public class HardwareAngRobot {
     /* Public Opmode Members */
     public DcMotor motor1,motor2, motor3, motor4, motorArm;
 
-    public CRServo servo1, servo2;
+    public Servo servo2;
+    public CRServo servo1;
     BNO055IMU imu;
 
 
@@ -49,7 +50,7 @@ public class HardwareAngRobot {
         
         /* Servos */
         servo1 = myOpMode.hardwareMap.get(CRServo.class, "Servo 1");
-        servo2 = myOpMode.hardwareMap.get(CRServo.class, "Servo 2");
+        servo2 = myOpMode.hardwareMap.get(Servo.class, "Servo 2");
     }
 
 
