@@ -39,7 +39,6 @@ public class AngTeleOp extends LinearOpMode {
             double rx = gamepad1.right_stick_x * -1;
 
             float right_stick_y = gamepad2.right_stick_y;
-            double right_stick_x = gamepad2.right_stick_x;
 
             //Used to ensure same ratio and contain values between [-1,1]
             double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
@@ -64,41 +63,58 @@ public class AngTeleOp extends LinearOpMode {
             robot.motor3.setPower(frontRightPower*throtte_control*slowDown1*-1);
             robot.motor4.setPower(backRightPower*throtte_control*slowDown1*-1);
 
-            // Servo Code
-            double servo2pos = robot.servo2.getPosition();
+//            Servo Code
+//            double servo2pos = robot.servo2.getPosition();
 
 
-            double serv2move = (right_stick_y * slowDown2);
+//            double serv2move = (right_stick_y * slowDown2);
 
 //            if (Math.abs(right_stick_y) > 0 ) {
 //
 //                robot.servo2.setPosition(servo2pos + serv2move);
 //            }
-
-
-            while (right_stick_y > 0) {
-                robot.servo2.setPosition(0.1);
+            if (right_stick_y > 0) {
+                robot.servo2.setPower(.8);
+                telemetry.addData("Status", "Rotating Servo Clockwise");
             }
 
-            while (right_stick_y < 0) {
-                robot.servo2.setPosition(-0.1);
+            if (right_stick_y < 0) {
+                robot.servo2.setPower(-0.8);
+                telemetry.addData("Status", "Rotating Servo Clockwise");
             }
+
+            robot.servo2.setPower(.02);
+            telemetry.addData("Status", "Stopping Servo Clockwise");
+
+//            if (right_stick_x > 0) {
+//                robot.servo3.setPosition(0.1);
+//            }
+//
+//            if (right_stick_x < 0) {
+//                robot.servo3.setPosition(-0.1);
+//            }
+//
+//            if (right_stick_y > 0) {
+//                robot.servo2.setPosition(0.1);
+//            }
+//
+//            if (right_stick_y < 0) {
+//                robot.servo2.setPosition(-0.1);
+//            }
 
             if (gamepad2.right_bumper) {
                 robot.servo1.setPower(.6);
                 telemetry.addData("Status", "Rotating Servo Clockwise");
-            } else {
-                robot.servo1.setPower(0);
-                telemetry.addData("Status", "Stopping Servo");
             }
 
             if (gamepad2.left_bumper) {
                 robot.servo1.setPower(-.6);
                 telemetry.addData("Status", "Rotating Servo Clockwise");
-            } else {
-                robot.servo1.setPower(0);
-                telemetry.addData("Status", "Stopping Servo");
             }
+
+            robot.servo1.setPower(0);
+            telemetry.addData("Status", "Stopping Servo");
+
 
 
 
@@ -116,21 +132,21 @@ public class AngTeleOp extends LinearOpMode {
             }
 
             //fast
-            while (gamepad2.left_stick_y * -1 > 0) {
+            if (gamepad2.left_stick_y > 0) {
                 robot.motorArm.setTargetPosition(robot.motorArm.getCurrentPosition() + 65);
                 robot.motorArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             }
-            while (gamepad2.left_stick_y * -1 < 0) {
+            if (gamepad2.left_stick_y < 0) {
                 robot.motorArm.setTargetPosition(robot.motorArm.getCurrentPosition() - 65);
                 robot.motorArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             }
 
             //slow
-            while (gamepad2.dpad_up) {
+            if (gamepad2.dpad_up) {
                 robot.motorArm.setTargetPosition(robot.motorArm.getCurrentPosition() + 25);
                 robot.motorArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             }
-            while (gamepad2.dpad_down) {
+            if (gamepad2.dpad_down) {
                 robot.motorArm.setTargetPosition(robot.motorArm.getCurrentPosition() - 25);
                 robot.motorArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             }
