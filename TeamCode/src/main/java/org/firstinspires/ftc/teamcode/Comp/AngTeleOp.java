@@ -115,8 +115,12 @@ public class AngTeleOp extends LinearOpMode {
             robot.servo1.setPower(0);
             telemetry.addData("Status", "Stopping Servo");
 
-
-
+            //Plane Launcher
+            if (gamepad2.x) {
+                robot.servo3.setPosition(0.5);
+                telemetry.addData("Status", "Launching Plane");
+            }
+            
 
             //Arm code - fast
 
