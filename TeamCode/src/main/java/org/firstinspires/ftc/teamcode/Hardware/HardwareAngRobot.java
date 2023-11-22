@@ -51,6 +51,7 @@ public class HardwareAngRobot {
         /* Servos */
         servo1 = myOpMode.hardwareMap.get(CRServo.class, "Servo 1");
         servo2 = myOpMode.hardwareMap.get(CRServo.class, "Servo 2");
+        servo3 = myOpMode.hardwareMap.get(Servo.class, "Servo 3");
     }
 
 

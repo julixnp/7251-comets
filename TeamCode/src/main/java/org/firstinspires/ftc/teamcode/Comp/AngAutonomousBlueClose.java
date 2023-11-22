@@ -8,8 +8,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Config
-@Autonomous(name="AngAutonomous", group="Comp")
-public class AngAutonomous extends LinearOpMode {
+@Autonomous(name="AngAutonomousBlueClose", group="Comp")
+public class AngAutonomousBlueClose extends LinearOpMode {
 
     public DcMotor motorFrontLeft, motorFrontRight, motorBackRight, motorBackLeft;
     public CRServo servoRotate;
@@ -22,7 +22,7 @@ public class AngAutonomous extends LinearOpMode {
     static final double WHEEL_DIAMETER_INCHES = 3.8;
     static final double COUNTS_PER_INCH = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
             (WHEEL_DIAMETER_INCHES * 3.1415);
-    static final double DRIVE_SPEED = 0.6f;
+    static final double DRIVE_SPEED = 0.5f;
     static final double TURN_SPEED = 0.5;
 
     @Override
@@ -74,8 +74,12 @@ public class AngAutonomous extends LinearOpMode {
         waitForStart();
 
 
-        strafeDrive(30, 30);
-        linearDrive(15, 37);
+        strafeDrive(DRIVE_SPEED, -6, 1);
+        linearDrive(DRIVE_SPEED, -39.5, 1);
+
+        // strafeDrive - assuming arrow is front: right is negative, left is positive
+        // linearDrive - assuming arrow is front: front is negative, back is positive
+
 
 
         telemetry.addData("Path", "Complete");
@@ -95,8 +99,8 @@ public class AngAutonomous extends LinearOpMode {
 
     }
 
-    public void linearDrive(double speed,
-                            double target) {
+    public void strafeDrive(double speed,
+                            double target, long timeoutS) {
         int newMotor1Target;
         int newMotor2Target;
         int newMotor3Target;
@@ -113,10 +117,10 @@ public class AngAutonomous extends LinearOpMode {
         motorFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
 
-        newMotor2Target = motorBackRight.getCurrentPosition() + (int) (target * COUNTS_PER_INCH);
-        newMotor1Target = motorBackLeft.getCurrentPosition() + (int) (target * COUNTS_PER_INCH);
-        newMotor3Target = motorFrontLeft.getCurrentPosition() + (int) (target * COUNTS_PER_INCH);
-        newMotor4Target = motorFrontRight.getCurrentPosition() + (int) (target * COUNTS_PER_INCH);
+        newMotor2Target = motorBackRight.getCurrentPosition() + (int) (target * COUNTS_PER_INCH / 4);
+        newMotor1Target = motorBackLeft.getCurrentPosition() + (int) (target * COUNTS_PER_INCH / 4);
+        newMotor3Target = motorFrontLeft.getCurrentPosition() + (int) (target * COUNTS_PER_INCH / 4);
+        newMotor4Target = motorFrontRight.getCurrentPosition() + (int) (target * COUNTS_PER_INCH / 4);
 
         // Ensure that the opmode is still active
         if (opModeIsActive()) {
@@ -164,11 +168,13 @@ public class AngAutonomous extends LinearOpMode {
             motorFrontLeft.setPower(0);
             motorFrontRight.setPower(0);
 
+            timeoutS = timeoutS * 1000;
+            sleep(timeoutS);
         }
     }
 
-    public void strafeDrive(double speed,
-                            double target) {
+    public void linearDrive(double speed,
+                            double target, long timeoutS) {
         int newMotor1Target;
         int newMotor2Target;
         int newMotor3Target;
@@ -184,10 +190,10 @@ public class AngAutonomous extends LinearOpMode {
         motorFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
 
-        newMotor2Target = motorBackRight.getCurrentPosition() + (int) (target * COUNTS_PER_INCH);
-        newMotor1Target = motorBackLeft.getCurrentPosition() + (int) (target * COUNTS_PER_INCH);
-        newMotor3Target = motorFrontLeft.getCurrentPosition() + (int) (target * COUNTS_PER_INCH);
-        newMotor4Target = motorFrontRight.getCurrentPosition() + (int) (target * COUNTS_PER_INCH);
+        newMotor2Target = motorBackRight.getCurrentPosition() + (int) (target * COUNTS_PER_INCH / 4);
+        newMotor1Target = motorBackLeft.getCurrentPosition() + (int) (target * COUNTS_PER_INCH / 4);
+        newMotor3Target = motorFrontLeft.getCurrentPosition() + (int) (target * COUNTS_PER_INCH / 4);
+        newMotor4Target = motorFrontRight.getCurrentPosition() + (int) (target * COUNTS_PER_INCH / 4);
 
         // Ensure that the opmode is still active
         if (opModeIsActive()) {
@@ -217,7 +223,6 @@ public class AngAutonomous extends LinearOpMode {
             motorFrontLeft.setPower(backLeftPower);
             motorFrontRight.setPower(backRightPower);
 
-
             while (opModeIsActive() &&
                     (motorBackLeft.isBusy() && motorBackRight.isBusy()) && (motorFrontLeft.isBusy() && motorFrontRight.isBusy())) {
 
@@ -235,8 +240,8 @@ public class AngAutonomous extends LinearOpMode {
             motorFrontLeft.setPower(0);
             motorFrontRight.setPower(0);
 
-            sleep(500);
-
+            timeoutS = timeoutS * 1000;
+            sleep(timeoutS);
         }
     }
 }

@@ -38,6 +38,21 @@ public class AngTeleOp extends LinearOpMode {
             double y = gamepad1.left_stick_x * 1.1;
             double rx = gamepad1.right_stick_x * -1;
 
+            if(gamepad1.dpad_up) {
+                x = 1;
+            }
+
+            if(gamepad1.dpad_down) {
+                x = -1;
+            }
+
+            if(gamepad1.dpad_left) {
+                y = -1;
+            }
+            if(gamepad1.dpad_right) {
+                y = 1;
+            }
+
             float right_stick_y = gamepad2.right_stick_y;
 
             //Used to ensure same ratio and contain values between [-1,1]
@@ -62,6 +77,9 @@ public class AngTeleOp extends LinearOpMode {
             robot.motor2.setPower(backLeftPower*throtte_control*slowDown1*-1);
             robot.motor3.setPower(frontRightPower*throtte_control*slowDown1*-1);
             robot.motor4.setPower(backRightPower*throtte_control*slowDown1*-1);
+
+
+
 
 //            Servo Code
 //            double servo2pos = robot.servo2.getPosition();
@@ -117,8 +135,10 @@ public class AngTeleOp extends LinearOpMode {
 
             //Plane Launcher
             if (gamepad2.x) {
-                robot.servo3.setPosition(0.5);
+                robot.servo3.setPosition(0.0);
                 telemetry.addData("Status", "Launching Plane");
+            } else if (gamepad2.left_stick_button) {
+                robot.servo3.setPosition(2.0);
             }
             
 
@@ -127,7 +147,6 @@ public class AngTeleOp extends LinearOpMode {
             double powerArm = 0.01;
 
             robot.motorArm.setPower(.1);
-
 
 
             if (gamepad2.a) {
