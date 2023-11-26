@@ -78,31 +78,44 @@ public class AngTeleOp extends LinearOpMode {
             robot.motor3.setPower(frontRightPower*throtte_control*slowDown1*-1);
             robot.motor4.setPower(backRightPower*throtte_control*slowDown1*-1);
 
+            double movements[] = new double[0];
+
+            double serv2move = (right_stick_y * slowDown2);
+
+            public double[] addMvts(double newMvt){
+                int n = movements.length;
+                int i;
+                double[] newArr = new double[n+1];
+
+                for (i=0; i < n; i++) {
+                    newArr[i] = movements[i];
+                }
+
+                newArr[n] = newMvt;
+
+                return newArr;
+            }
+
+            if (Math.abs(right_stick_y) > 0 ) {
+                robot.servo2.setPosition(serv2move);
+
+                movements = addMvts(movements, serv2move);
+            }
+
+            if (gamepad2.right_stick_button) {
+
+            }
 
 
-
-//            Servo Code
-//            double servo2pos = robot.servo2.getPosition();
-
-
-//            double serv2move = (right_stick_y * slowDown2);
-
-//            if (Math.abs(right_stick_y) > 0 ) {
-//
-//                robot.servo2.setPosition(servo2pos + serv2move);
+//            if (right_stick_y < 0) {
+//                robot.servo2.setPower(.8);
+//                telemetry.addData("Status", "Rotating Servo Clockwise");
 //            }
-            if (right_stick_y > 0) {
-                robot.servo2.setPower(.8);
-                telemetry.addData("Status", "Rotating Servo Clockwise");
-            }
-
-            if (right_stick_y < 0) {
-                robot.servo2.setPower(-0.8);
-                telemetry.addData("Status", "Rotating Servo Clockwise");
-            }
-
-            robot.servo2.setPower(.02);
-            telemetry.addData("Status", "Stopping Servo Clockwise");
+//
+//            if (right_stick_y > 0) {
+//                robot.servo2.setPower(-0.8);
+//                telemetry.addData("Status", "Rotating Servo Clockwise");
+//            }
 
 //            if (right_stick_x > 0) {
 //                robot.servo3.setPosition(0.1);
@@ -134,13 +147,14 @@ public class AngTeleOp extends LinearOpMode {
             telemetry.addData("Status", "Stopping Servo");
 
             //Plane Launcher
+
             if (gamepad2.x) {
                 robot.servo3.setPosition(0.0);
                 telemetry.addData("Status", "Launching Plane");
-            } else if (gamepad2.left_stick_button) {
+            } else if (Math.abs(gamepad2.left_trigger) > 0) {
                 robot.servo3.setPosition(2.0);
             }
-            
+
 
             //Arm code - fast
 
@@ -155,11 +169,11 @@ public class AngTeleOp extends LinearOpMode {
             }
 
             //fast
-            if (gamepad2.left_stick_y > 0) {
+            if (gamepad2.left_stick_y < 0) {
                 robot.motorArm.setTargetPosition(robot.motorArm.getCurrentPosition() + 65);
                 robot.motorArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             }
-            if (gamepad2.left_stick_y < 0) {
+            if (gamepad2.left_stick_y > 0) {
                 robot.motorArm.setTargetPosition(robot.motorArm.getCurrentPosition() - 65);
                 robot.motorArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             }
