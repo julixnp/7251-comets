@@ -13,6 +13,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.Hardware.HardwareAngRobot;
 
+import java.util.ArrayList;
+
 @Config
 @TeleOp(name="AngTeleOp", group="Comp")
 public class AngTeleOp extends LinearOpMode {
@@ -38,6 +40,7 @@ public class AngTeleOp extends LinearOpMode {
             double y = gamepad1.left_stick_x * 1.1;
             double rx = gamepad1.right_stick_x * -1;
 
+
             if(gamepad1.dpad_up) {
                 x = 1;
             }
@@ -52,8 +55,6 @@ public class AngTeleOp extends LinearOpMode {
             if(gamepad1.dpad_right) {
                 y = 1;
             }
-
-            float right_stick_y = gamepad2.right_stick_y;
 
             //Used to ensure same ratio and contain values between [-1,1]
             double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
@@ -78,34 +79,6 @@ public class AngTeleOp extends LinearOpMode {
             robot.motor3.setPower(frontRightPower*throtte_control*slowDown1*-1);
             robot.motor4.setPower(backRightPower*throtte_control*slowDown1*-1);
 
-            double movements[] = new double[0];
-
-            double serv2move = (right_stick_y * slowDown2);
-
-            public double[] addMvts(double newMvt){
-                int n = movements.length;
-                int i;
-                double[] newArr = new double[n+1];
-
-                for (i=0; i < n; i++) {
-                    newArr[i] = movements[i];
-                }
-
-                newArr[n] = newMvt;
-
-                return newArr;
-            }
-
-            if (Math.abs(right_stick_y) > 0 ) {
-                robot.servo2.setPosition(serv2move);
-
-                movements = addMvts(movements, serv2move);
-            }
-
-            if (gamepad2.right_stick_button) {
-
-            }
-
 
 //            if (right_stick_y < 0) {
 //                robot.servo2.setPower(.8);
@@ -116,51 +89,39 @@ public class AngTeleOp extends LinearOpMode {
 //                robot.servo2.setPower(-0.8);
 //                telemetry.addData("Status", "Rotating Servo Clockwise");
 //            }
-
-//            if (right_stick_x > 0) {
-//                robot.servo3.setPosition(0.1);
-//            }
-//
-//            if (right_stick_x < 0) {
-//                robot.servo3.setPosition(-0.1);
-//            }
 //
 //            if (right_stick_y > 0) {
-//                robot.servo2.setPosition(0.1);
+//                robot.servo2.setPower(0.1);
 //            }
 //
 //            if (right_stick_y < 0) {
-//                robot.servo2.setPosition(-0.1);
+//                robot.servo2.setPower(-0.1);
 //            }
-
-            if (gamepad2.right_bumper) {
-                robot.servo1.setPower(.6);
-                telemetry.addData("Status", "Rotating Servo Clockwise");
-            }
-
-            if (gamepad2.left_bumper) {
-                robot.servo1.setPower(-.6);
-                telemetry.addData("Status", "Rotating Servo Clockwise");
-            }
-
-            robot.servo1.setPower(0);
-            telemetry.addData("Status", "Stopping Servo");
-
-            //Plane Launcher
-
-            if (gamepad2.x) {
-                robot.servo3.setPosition(0.0);
-                telemetry.addData("Status", "Launching Plane");
-            } else if (Math.abs(gamepad2.left_trigger) > 0) {
-                robot.servo3.setPosition(2.0);
-            }
+//
+//            if (gamepad2.right_bumper) {
+//                robot.servo1.setPower(.6);
+//                telemetry.addData("Status", "Rotating Servo Clockwise");
+//            }
+//
+//            if (gamepad2.left_bumper) {
+//                robot.servo1.setPower(-.6);
+//                telemetry.addData("Status", "Rotating Servo Clockwise");
+//            }
+//
+//            robot.servo1.setPower(0);
+//            telemetry.addData("Status", "Stopping Servo");
+//
+//            //Plane Launcher
+//
+//            if (gamepad2.x) {
+//                robot.servo3.setPosition(0.0);
+//                telemetry.addData("Status", "Launching Plane");
+//            } else if (Math.abs(gamepad2.left_trigger) > 0) {
+//                robot.servo3.setPosition(2.0);
+//            }
 
 
             //Arm code - fast
-
-            double powerArm = 0.01;
-
-            robot.motorArm.setPower(.1);
 
 
             if (gamepad2.a) {
@@ -170,11 +131,11 @@ public class AngTeleOp extends LinearOpMode {
 
             //fast
             if (gamepad2.left_stick_y < 0) {
-                robot.motorArm.setTargetPosition(robot.motorArm.getCurrentPosition() + 65);
+                robot.motorArm.setTargetPosition(robot.motorArm.getCurrentPosition() + 105);
                 robot.motorArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             }
             if (gamepad2.left_stick_y > 0) {
-                robot.motorArm.setTargetPosition(robot.motorArm.getCurrentPosition() - 65);
+                robot.motorArm.setTargetPosition(robot.motorArm.getCurrentPosition() - 105);
                 robot.motorArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             }
 

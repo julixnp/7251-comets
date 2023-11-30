@@ -27,47 +27,7 @@ public class ArmTesting extends LinearOpMode {
         arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         while(opModeIsActive()) {
-            if (gamepad1.y) {
-                arm.setPower(power);
-                arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-            } else if (gamepad1.x) {
-                arm.setPower(power);
-                arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-            } else if (gamepad1.a){
-                arm.setTargetPosition(0);
-                arm.setPower(power);
-                arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            }
-            else if (gamepad1.b) {
-                arm.setPower(power);
-                arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            }
-            else if (gamepad1.left_stick_y * -1 > 0) {
-                arm.setTargetPosition(arm.getCurrentPosition() + 300);
-                arm.setPower(power);
-                arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            }
-            else if (gamepad1.left_stick_y * -1 < 0) {
-                arm.setTargetPosition(arm.getCurrentPosition() - 300);
-                arm.setPower(power);
-                arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            }
-
-            if(gamepad1.right_trigger > 0) {
-                hand.setPower(1);
-            }
-            else if(gamepad1.left_trigger > 0) {
-                hand.setPower(-1);
-            }
-            else {
-                hand.setPower(0);
-            }
-
-
-            telemetry.addData("Position", arm.getCurrentPosition());
-            telemetry.update();
         }
 
 
